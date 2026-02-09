@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ArrowRight, Shield, Zap, CheckCircle } from "lucide-react";
+import { Star, ArrowRight, Shield, Zap } from "lucide-react";
+import HeroSteps from "./HeroSteps";
 
 export default function Hero() {
   return (
@@ -108,89 +109,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Dashboard mockup */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        className="max-w-[1100px] mx-auto px-6 pb-20"
-      >
-        <div className="rounded-xl border border-gray-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden">
-          {/* Browser chrome */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-border bg-gray-bg">
-            <div className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-              <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-              <div className="w-3 h-3 rounded-full bg-[#28C840]" />
-            </div>
-            <div className="flex-1 ml-3">
-              <div className="max-w-[300px] h-7 rounded-md bg-white border border-gray-border flex items-center px-3">
-                <span className="text-[12px] text-gray-text">tm30.ai/dashboard</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Dashboard content */}
-          <div className="p-6 md:p-8 bg-gray-bg">
-            {/* Stats row */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
-              {[
-                { label: "Forms Submitted", value: "247", change: "+12 this week", changeColor: "text-success" },
-                { label: "Success Rate", value: "99.8%", change: "Auto-retry on", changeColor: "text-primary" },
-                { label: "Avg. Processing", value: "~10s", change: "AI-powered", changeColor: "text-primary" },
-                { label: "Active Guests", value: "8", change: "2 arriving today", changeColor: "text-amber-500" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-white rounded-lg border border-gray-border p-4"
-                >
-                  <div className="text-[12px] text-gray-text mb-1">{stat.label}</div>
-                  <div className="text-[26px] font-bold text-dark leading-tight">{stat.value}</div>
-                  <div className={`text-[12px] ${stat.changeColor} mt-0.5`}>{stat.change}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Recent submissions table */}
-            <div className="bg-white rounded-lg border border-gray-border overflow-hidden">
-              <div className="px-4 py-3 border-b border-gray-border">
-                <span className="text-[13px] font-semibold text-dark">Recent Submissions</span>
-              </div>
-              <div className="divide-y divide-gray-border">
-                {[
-                  { name: "John Smith", passport: "US****789", status: "Confirmed", time: "2 min ago" },
-                  { name: "Marie Dupont", passport: "FR****234", status: "Confirmed", time: "1 hr ago" },
-                  { name: "Yuki Tanaka", passport: "JP****567", status: "Processing", time: "Just now" },
-                ].map((row) => (
-                  <div key={row.name} className="flex items-center justify-between px-4 py-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center text-[12px] font-semibold text-primary">
-                        {row.name.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="text-[13px] font-medium text-dark">{row.name}</div>
-                        <div className="text-[12px] text-gray-text">{row.passport}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <span
-                        className={`text-[12px] font-medium px-2 py-0.5 rounded-full ${
-                          row.status === "Confirmed"
-                            ? "bg-green-50 text-success"
-                            : "bg-primary-light text-primary"
-                        }`}
-                      >
-                        {row.status}
-                      </span>
-                      <span className="text-[12px] text-gray-text hidden sm:block">{row.time}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      {/* How it works visual steps */}
+      <HeroSteps />
     </section>
   );
 }
